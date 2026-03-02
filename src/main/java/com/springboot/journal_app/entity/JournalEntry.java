@@ -1,8 +1,7 @@
 package com.springboot.journal_app.entity;
 
 import jakarta.persistence.*;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "journal_entries")
@@ -16,13 +15,13 @@ public class JournalEntry {
 
     private String content;
 
-    private Date date;
+    private LocalDateTime date;
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
