@@ -1,6 +1,8 @@
 package com.springboot.journal_app.controller;
 
 import com.springboot.journal_app.entity.JournalEntry;
+import com.springboot.journal_app.service.JournalEntryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -9,6 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/journal")
 public class JournalEntryController {
+
+    @Autowired
+    private JournalEntryService journalEntryService;
 
 
 
@@ -24,7 +29,7 @@ public class JournalEntryController {
 
     @PostMapping
     public boolean createEntry(@RequestBody JournalEntry myEntry){ //localhost:8080/journal
-
+        journalEntryService.saveEntry(myEntry);
         return true;
     }
 
