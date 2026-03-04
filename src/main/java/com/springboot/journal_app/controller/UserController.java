@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> addNewUser(@RequestBody User newUser){ //localhost:8080/users
         try{
-            userService.saveEntry(newUser);
+            userService.saveUser(newUser);
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(newUser, HttpStatus.BAD_REQUEST);
@@ -56,7 +56,7 @@ public class UserController {
         if(userInDb != null){
             userInDb.setUserName(user.getUserName());
             userInDb.setPassword(user.getPassword());
-            userService.saveEntry(userInDb);
+            userService.saveUser(userInDb);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
