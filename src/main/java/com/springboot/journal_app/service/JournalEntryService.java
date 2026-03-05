@@ -49,4 +49,10 @@ public class JournalEntryService {
         journalEntryRepo.deleteById(Id);
     }
 
+    @Transactional
+    public boolean existsByIdAndUser_UserName(long id, String userName){
+        return journalEntryRepo.existsByIdAndUser_UserName(id,userName);
+    }
+
+
 }
