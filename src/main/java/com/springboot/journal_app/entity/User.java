@@ -23,5 +23,6 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<JournalEntry> journalEntries = new ArrayList<>();
+    private List<String> roles;
 
 }
