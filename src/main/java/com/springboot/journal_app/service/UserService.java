@@ -3,6 +3,7 @@ package com.springboot.journal_app.service;
 
 import com.springboot.journal_app.entity.User;
 import com.springboot.journal_app.respository.UserRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 
 @Service
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -22,10 +24,18 @@ public class UserService {
 
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+
     @Transactional
     public void saveUser(User user){
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRoles(Arrays.asList("USER"));
+            userRepo.save(user);
+    }
+
+    @Transactional
+    public void saveAdmin(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(Arrays.asList("USER"));
+        user.setRoles(Arrays.asList("USER","ADMIN"));
         userRepo.save(user);
     }
 

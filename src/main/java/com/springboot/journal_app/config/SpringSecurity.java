@@ -25,8 +25,9 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
         return http.authorizeHttpRequests(request -> request
-                    .requestMatchers("/journal/**","/users**").authenticated()
-                    .anyRequest().permitAll())
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/journal/**","/users**").authenticated()
+                        .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session ->
@@ -45,9 +46,11 @@ public class SpringSecurity {
         return authProvider;
     }
 
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
 }

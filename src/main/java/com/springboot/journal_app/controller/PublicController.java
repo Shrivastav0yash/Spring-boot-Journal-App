@@ -22,7 +22,7 @@ public class PublicController {
             userService.saveUser(newUser);
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(newUser, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
