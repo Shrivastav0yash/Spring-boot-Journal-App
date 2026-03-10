@@ -3,7 +3,6 @@ package com.springboot.journal_app.cache;
 import com.springboot.journal_app.entity.ConfigJournalAppEntity;
 import com.springboot.journal_app.respository.ConfigJournalAppRepo;
 import jakarta.annotation.PostConstruct;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 public class AppCache {
 
     public enum keys{
-        WEATHER_API;
+        WEATHER_API
     }
 
     @Autowired
