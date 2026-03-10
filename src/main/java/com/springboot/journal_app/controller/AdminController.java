@@ -1,5 +1,6 @@
 package com.springboot.journal_app.controller;
 
+import com.springboot.journal_app.cache.AppCache;
 import com.springboot.journal_app.entity.User;
 import com.springboot.journal_app.entity.UserDTO;
 import com.springboot.journal_app.service.UserService;
@@ -18,6 +19,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AppCache appCache;
 
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers(){
@@ -51,4 +55,10 @@ public class AdminController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/clear-app-cache")
+    public void clearAppCache(){
+        appCache.init();
+    }
+
 }

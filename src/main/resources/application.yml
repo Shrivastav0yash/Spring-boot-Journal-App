@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Chapter-7-Spring-Boot
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/Springboot
+    username: root
+    password: Yash123@
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+weather:
+  api:
+    key: 307afef4f0964cec056f8d98bb36227e
