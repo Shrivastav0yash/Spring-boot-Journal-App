@@ -19,6 +19,8 @@ public class User {
     private long userId;
     @Column(unique = true, nullable = false)
     private String userName;
+    private String email;
+    private boolean sentimentAnalysis;
     @Column(nullable = false)
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
