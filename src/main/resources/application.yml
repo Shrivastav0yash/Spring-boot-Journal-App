@@ -12,6 +12,19 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: thunderxtra02@gmail.com
+    password: ifxw uhpr pelw yqos
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 weather:
   api:
     key: 307afef4f0964cec056f8d98bb36227e

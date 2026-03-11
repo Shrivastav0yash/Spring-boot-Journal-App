@@ -35,7 +35,10 @@ public class UserRepoImpl {
                 );
 
          */
-        Predicate emailExist = criteriaBuilder.isNotNull(root.get("email")).;
+        Predicate emailExist = criteriaBuilder.and(
+                criteriaBuilder.isNotNull(root.get("email")),
+                criteriaBuilder.notEqual(root.get("email"), "")
+        );
         Predicate sentimentExist = criteriaBuilder.equal(root.get("sentimentAnalysis"), true);
         criteriaQuery.select(root).
                 where(
