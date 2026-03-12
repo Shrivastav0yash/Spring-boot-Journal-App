@@ -12,8 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static jdk.dynalink.linker.support.Guards.isNotNull;
-
 @Repository
 public class UserRepoImpl {
 
