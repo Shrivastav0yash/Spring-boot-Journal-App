@@ -1,4 +1,11 @@
 spring:
+  data:
+    redis:
+    host: redis-18782.crce286.ap-south-1-1.ec2.cloud.redislabs.com
+    port: 18782
+    password: kvi30jOJijekUaOpqo4u9vqZ9M4EyZq2
+    ssl:
+      enabled: true
   application:
     name: Chapter-7-Spring-Boot
 
@@ -24,10 +31,7 @@ spring:
           auth: true
           starttls:
             enable: true
-  redis:
-    host: redis-18782.crce286.ap-south-1-1.ec2.cloud.redislabs.com
-    port: 18782
-    password: kvi30jOJijekUaOpqo4u9vqZ9M4EyZq2
+
 
 
 weather:
