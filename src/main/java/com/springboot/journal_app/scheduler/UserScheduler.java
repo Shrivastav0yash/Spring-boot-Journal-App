@@ -23,7 +23,7 @@ public class UserScheduler {
     @Autowired
     private AppCache appCache;
 
-    @Scheduled(cron = "0 0 9 * * SUN")
+    //@Scheduled(cron = "0 0 9 * * SUN")
     public void fetchUserAndSendMail(){
         List<User> users = userRepoimpl.getUserForSA();
         for(User user : users){
@@ -37,7 +37,7 @@ public class UserScheduler {
         }
     }
 
-    @Scheduled(cron = "0 0/5 * 1/1 * ? *")
+   // @Scheduled(cron = "0 0/5 * 1/1 * ? *")
     public void clearAppCache(){
         appCache.init();
     }
