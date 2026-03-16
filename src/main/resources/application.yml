@@ -7,7 +7,6 @@ spring:
       host: localhost
       port: 6379
 
-
   datasource:
     url: jdbc:mysql://localhost:3306/Springboot
     username: root
@@ -30,6 +29,26 @@ spring:
           auth: true
           starttls:
             enable: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      group-id: weekly-sentiment-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.springboot.journal_app.model
+
+
 weather:
   api:
     key: 307afef4f0964cec056f8d98bb36227e

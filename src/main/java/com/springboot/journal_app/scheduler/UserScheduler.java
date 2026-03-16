@@ -3,9 +3,11 @@ package com.springboot.journal_app.scheduler;
 import com.springboot.journal_app.cache.AppCache;
 import com.springboot.journal_app.entity.JournalEntry;
 import com.springboot.journal_app.entity.User;
+import com.springboot.journal_app.model.SentimentData;
 import com.springboot.journal_app.respository.UserRepoImpl;
 import com.springboot.journal_app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +25,11 @@ public class UserScheduler {
     @Autowired
     private AppCache appCache;
 
-    //@Scheduled(cron = "0 0 9 * * SUN")
+    @Autowired
+    private KafkaTemplate<String, SentimentData> kafkaTemplate;
+
+
+    @Scheduled(cron = "0 0 9 * * SUN")
     public void fetchUserAndSendMail(){
         List<User> users = userRepoimpl.getUserForSA();
         for(User user : users){
@@ -37,7 +43,7 @@ public class UserScheduler {
         }
     }
 
-   // @Scheduled(cron = "0 0/5 * 1/1 * ? *")
+    //@Scheduled(cron = "0 0/5 * 1/1 * ? *")
     public void clearAppCache(){
         appCache.init();
     }
