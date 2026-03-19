@@ -10,7 +10,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/Springboot
     username: root
-    password: Yash123@
+    password: root
 
   jpa:
     hibernate:
